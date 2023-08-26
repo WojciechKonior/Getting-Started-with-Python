@@ -4,9 +4,23 @@ class Book:
         self.title = title
         self.author = author
         self.price = price
+        self._discount = 0.1
 
     def __str__(self):
         return f"The Book '{self.title}' by {self.author} consts {self.price}"
+
+    # def __getattribute__(self, name):
+    #     if(name == "price"):
+    #         p = super().__getattribute__("price")
+    #         d = super().__getattribute__("_discount")
+    #         return p - (p*d)
+    #     return super().__getattribute__(name)
+
+    def __setattr__(self, name, value):
+        if name == "price":
+            if type(value) is not float:
+                raise ValueError("The price attr must be float")
+        return super().__setattr__(name, value)
 
     def __repr__(self):
         return f"title={self.title}, author={self.author}, price={self.price}"
@@ -38,6 +52,9 @@ class Book:
             raise ValueError(f"cannot compare {type(self)} with {type(book)}")
         return self.price <= book.price
 
+    def __getattr__(self, name):
+        return name + " is not here"
+
 
 b1 = Book("Quo Vadis", "Sienkiewicz", 40.3)
 b2 = Book("Faraon", "Prus", 4.3)
@@ -54,7 +71,14 @@ books.sort()
 
 print([book.title for book in books])
 
-print(b1==b2)
-print(b1==40)
+# print(b1==b2)
+# print(b1==40)
+#
+# print(b1>b2)
 
-print(b1>b2)
+print(b1.price)
+print(str(b2))
+
+b1.price = float(2)
+
+print(b2.price)
