@@ -1,11 +1,15 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+import random
 
-@dataclass
+def price_func():
+    return float(random.randrange(20,40))
+
+@dataclass(frozen=True)
 class Book:
     title: str = "no title"
     author: str = "no author"
     pages: int = 0
-    price: float = 0.0
+    price: float = field(default_factory=price_func)
 
     def __str__(self):
         return f'The book "{self.title}" by {self.author} has {self.pages} pages and costs {self.price}'
