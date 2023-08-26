@@ -55,6 +55,12 @@ class Book:
     def __getattr__(self, name):
         return name + " is not here"
 
+    def __call__(self, title, author, price, discount):
+        self.title = title
+        self.author = author
+        self.price = price
+        self._discount = discount
+
 
 b1 = Book("Quo Vadis", "Sienkiewicz", 40.3)
 b2 = Book("Faraon", "Prus", 4.3)
@@ -82,3 +88,6 @@ print(str(b2))
 b1.price = float(2)
 
 print(b2.price)
+b2("Lalka", "Prus", 45.3, 0.1)
+
+print(str(b2))
