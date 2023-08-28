@@ -32,5 +32,38 @@ print(f"{math.pi:.6f}")
 print("Pi is {}".format(math.pi))
 
 print(bin(231))
-print(bytes(231))
+print(bytes(5))
 print(bytes('443', 'utf-8').decode('utf-8'))
+
+# tuples and sets
+def retSomeTuple():
+    return 1,3,5,1,2
+
+print(retSomeTuple(), type(retSomeTuple()))
+
+print(set(retSomeTuple()))
+
+y = set((1, 2, 1, 4, 3, 5, 6))
+z = {1, 2, 3}
+print(y, z)
+
+
+x = [2, 2, 1, 4, 2]
+xx = [2*_x for _x in x]
+
+print(xx)
+
+print([2*_x for _x in x if _x%2==0])
+
+
+sss = "My name is Wojtek Konior and I live in Poland"
+print(sss.split())
+print(sss.split("Konior"))
+print(sss.replace("Konior", "KONIOR"))
+
+
+zzz = {'a':"Wojtek", 'b':"Monika", 'c':"Szczepanek"}
+
+print({item[0]:item[1] for item in zzz.items()})
+
+print({key:value for key,value in zzz.items()})
