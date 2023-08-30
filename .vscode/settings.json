@@ -1,5 +1,7 @@
 {
     "workbench.colorTheme": "Visual Studio Dark",
     "vim.startInInsertMode": true,
-    "vim.statusBarColorControl": true
+    "vim.statusBarColorControl": true,
+    "editor.fontSize": 15,
+    "terminal.integrated.fontSize": 15
 }
