@@ -4,5 +4,8 @@ def causeError():
 def callCauseError():
     return causeError()
 
-callCauseError()
-
+# print(callCauseError())
+try:
+    callCauseError()
+except Exception as e:
+    print(type(e))

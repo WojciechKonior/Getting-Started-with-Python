@@ -12,7 +12,7 @@ class Book:
   def getbooktypes(cls):
     return cls.BOOK_TYPES
   
-  def __init__(self, title author, pages, price, booktype):
+  def __init__(self, title, author, pages, price, booktype):
     self.title = title
     self.pages = pages
     self.author = author
