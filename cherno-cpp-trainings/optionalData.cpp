@@ -19,9 +19,11 @@ int main()
 {
     std::optional<std::string> str = ReadFileAsString("some.txt");
     if(str.has_value())
-        std::cout << "file read successfully" << std::endl;
+        std::cout << "file read successfully " << *str << str.value() << std::endl;
     else
         std::cout << "str has no value\n";
+
+    std::string value = str.value_or("has no value");
 
     return 0;
 }
