@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <optional>
+#include <variant>
+#include <any>
 
 std::optional<std::string> ReadFileAsString(const std::string& filepath)
 {
@@ -24,6 +26,19 @@ int main()
         std::cout << "str has no value\n";
 
     std::string value = str.value_or("has no value");
+
+    std::variant<std::string, int> val;
+    val = "Wojtek";
+    val = 2;
+
+    int *v = std::get_if<int>(&val);
+    std::cout << *v << std::endl;
+
+    std::any var1;
+    var1 = std::string("Wojtek");
+
+    std::string& str1 = std::any_cast<std::string&>(var1);
+    std::cout << str1 << std::endl;
 
     return 0;
 }
