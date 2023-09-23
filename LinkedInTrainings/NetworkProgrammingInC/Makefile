@@ -1,5 +1,8 @@
 gethostdetails:
 	gcc gethostdetails.c -o main && ./main
 
-getaddrinfo:
-	gcc getaddrinfo.c -o main && ./main
+tcp_serv:
+	gcc tcp_server.c -o main && ./main
+
+udp_serv:
+	gcc udp_server.c -o main && ./main
