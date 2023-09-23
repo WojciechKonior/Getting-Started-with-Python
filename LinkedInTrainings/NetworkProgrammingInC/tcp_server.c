@@ -1,49 +1,68 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#include <netdb.h>
 #include <unistd.h>
+#include <netdb.h>
 #include <sys/socket.h>
 
 int main()
 {
-    struct addrinfo hints;
-    struct addrinfo *server;
+    struct addrinfo hints, *server;
+    struct sockaddr client_address;
+    socklen_t client_len;
+    int r, sockfd, clientfd;
+    const int buffer_size = 1024;
+    char buffer[buffer_size];
 
+    printf("Configureing server...");
     memset(&hints, 0, sizeof(struct addrinfo));
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
+    r = getaddrinfo(0, "8080", &hints, &server);
+    if(r!=0) {perror("failed");exit(1);}
+    puts(" done");
 
-    puts("Getting addrinfo...");
-    int r = getaddrinfo("127.0.0.1", "8080", &hints, &server);
-    if(r!=0){perror("Failed"); return 1;}
+    printf("Assign a socket...");
+    sockfd = socket(server->ai_family, server->ai_socktype, server->ai_protocol);
+    if(sockfd==-1){perror("failed"); exit(1);}
+    puts(" done");
 
-    puts("Setting up server socket...");
-    int serv_socket = socket(server->ai_family, server->ai_socktype, server->ai_protocol);
-    if(serv_socket==-1){perror("Failed"); return 1;}
+    printf("Binding socket...");
+    r = bind(sockfd, server->ai_addr, server->ai_addrlen);
+    if(r==-1){perror("failed"); exit(1);}
+    puts(" done");
 
-    puts("Binding...");
-    struct sockaddr client_addr;
-    socklen_t client_addrlen = sizeof(struct sockaddr);
-    int r2 = bind(serv_socket, &client_addr, client_addrlen);
-    if(r2==-1){perror("Failed"); return 1;}
+    printf("Listening...");
+    r = listen(sockfd,1);
+    if(r==-1){perror("failed"); exit(1);}
+    puts(" done");
 
-    puts("Listening...");
-    int r3 = listen(serv_socket, 1);
-    int client_socket = accept(serv_socket, &client_addr, &client_addrlen);
-    if(client_socket==-1) {perror("Failed"); return 1;}
+    printf("Accepting new connection ");
+    client_len = sizeof(client_address);
+    clientfd = accept(sockfd, &client_address, &client_len);
+    if(clientfd==-1){perror("failed"); exit(1);}
+    printf("on file descriptor %d\n", clientfd);
 
+    r = recv(clientfd, buffer, buffer_size, 0);
+    if(r>0){
+        printf("Received %d bytes:\n---\n", r);
+        for(int i = 0; i<r; i++)
+            putchar(buffer[i]);
+    }
 
+    const char *http_data = 
+        "HTTP/1.1 200 OK\r\n"
+        "Connection: close\r\n"
+        "Content-Type: text/html\r\n\r\n"
+        "<h1>Hello from your server!</h1>";
+
+    r = send(clientfd, http_data, strlen(http_data), 0);
+    if(r<1){perror("send failed"); exit(1);}
+    printf("Sent %d bytes\n", r);
+
+    close(clientfd);
     freeaddrinfo(server);
-    close(serv_socket);
-    close(client_socket);
+    close(sockfd);
+
     return 0;
 }
-
-// netdb.h
-// struct addrinfo
-// ai_family
-// ai_socktype
-// AF_INET
-// SOCK_STREAM
-// getaddrinfo
-// freeaddrinfo
