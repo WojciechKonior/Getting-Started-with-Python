@@ -5,7 +5,7 @@ tcp_serv:
 	gcc tcp_server.c -o main && ./main && rm main
 
 tcp_client:
-	gcc tcp_client.c -o main && ./main && rm main
+	gcc tcp_client.c -o main2 && ./main2 && rm main2
 
 udp_serv:
 	gcc udp_server.c -o main && ./main && rm main

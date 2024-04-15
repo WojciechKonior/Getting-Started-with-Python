@@ -95,6 +95,7 @@ int main()
 
     // client is now connected
     r = recv(clientfd, buffer, buffer_size, 0);
+    buffer[r]='\0';
     if (r > 0)
     {
         printf("Received %d bytes\n---\n", r);
@@ -104,7 +105,8 @@ int main()
 
     // send the response
     printf("Sending response...");
-    r = send(clientfd, http_data, strlen(http_data), 0);
+    // r = send(clientfd, http_data, strlen(http_data), 0);
+    r = send(clientfd, buffer, strlen(buffer), 0);
     if (r < 0)
     {
         perror("failed");
