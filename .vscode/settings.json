@@ -3,5 +3,10 @@
     "vim.startInInsertMode": true,
     "vim.statusBarColorControl": true,
     "editor.fontSize": 15,
-    "terminal.integrated.fontSize": 15
+    "terminal.integrated.fontSize": 15,
+    "files.associations": {
+        "\"*.cu\"": "\"cpp\"",
+        "\"*.cuh\"": "\"cpp\"",
+        "random": "c"
+    }
 }
