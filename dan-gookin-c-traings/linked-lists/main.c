@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define SIZE 16
+#define SIZE 32
 
 struct item{
     int id;
@@ -11,30 +11,30 @@ struct item{
     struct item *next;
 };
 
-/* read standard input, discard newline */
-char *input(void)
-{
-    static char buffer[SIZE];
-    char *r;
-    int x;
+// /* read standard input, discard newline */
+// char *input(void)
+// {
+//     static char buffer[SIZE];
+//     char *r;
+//     int x;
 
-    buffer[0] = '\0';
+//     buffer[0] = '\0';
 
-    r = fgets(buffer, SIZE, stdin);
-    if(r==NULL){
-        fprintf(stderr, "Input error\n");
-        exit(1);
-    }
+//     r = fgets(buffer, SIZE, stdin);
+//     if(r==NULL){
+//         fprintf(stderr, "Input error\n");
+//         exit(1);
+//     }
 
-    for(x = 0; x<SIZE; x++){
-        if(buffer[x]=='\n'){
-            buffer[x] = '\0';
-            break;
-        }
-    }
+//     for(x = 0; x<SIZE; x++){
+//         if(buffer[x]=='\n'){
+//             buffer[x] = '\0';
+//             break;
+//         }
+//     }
 
-    return buffer;
-}
+//     return buffer;
+// }
 
 struct item* allocate(void)
 {
@@ -58,12 +58,84 @@ void fill(struct item *s, int i)
     // strcpy(temp, input());
     // s->price = strtof(temp, NULL);
 
-    char *fruit[] = {"apples", "bananas", "grapes", "strawberry", "plums"};
-    float prices[] = {1.20, 2.58, 2.09, 2.40, 0.51};
+    static const char *fruit[] = {"apples", "bananas", "grapes", "strawberry", "plums"};
+    static float prices[] = {1.20, 2.58, 2.09, 2.40, 0.51};
 
-    s->id = i;
-    strcpy(s->name, fruit[i]);
+    s->id = i+1;
     s->price = prices[i];
+    strcpy(s->name, fruit[i]);
+}
+
+void update_ids(struct item* begin)
+{
+    struct item* current = begin;
+    int i = 1;
+    while(current->next!=NULL)
+    {
+        current->id = i++;
+        current = current->next;
+    }
+}
+
+void insert_item(struct item *begin, int id, const char* name, float price)
+{
+    printf("adding the %d record...\n", id);
+    struct item *current = begin;
+    struct item *previous = NULL;
+    while(current->id != id)
+    {
+        previous = current;
+        current = current->next;
+        if(current == NULL)
+        {
+            fprintf(stderr, "Structure out of bounds\n");
+            exit(1);
+        }
+    }
+
+    struct item* new = allocate();
+    new->id = current->id;
+    new->price = current->price;
+    strcpy(new->name, current->name);
+    new->next = current->next;
+
+    current->id = id;
+    current->next = new;
+    current->price = price;
+    strcpy(current->name, name);
+    
+    update_ids(begin);
+}
+
+void delete(struct item *begin, int id)
+{
+    printf("Removing the %d record...\n", id);
+    struct item *current = begin;
+    struct item *previous = NULL;
+    while(current->id != id)
+    {
+        previous = current;
+        current = current->next;
+        if(current == NULL)
+        {
+            fprintf(stderr, "Structure out of bounds\n");
+            exit(1);
+        }
+    }
+
+    if(current->next != NULL){
+        struct item *next = current->next;
+        strcpy(current->name, next->name);
+        current->price = next->price;
+        current->next = next->next;
+        free(next);
+    }
+    else{
+        previous->next = NULL;
+        free(current);
+    }
+
+    update_ids(begin);
 }
 
 void output(struct item *s)
@@ -81,7 +153,7 @@ void output(struct item *s)
 
 int main(int argc, char* argv[])
 {
-    struct item *first, *current;
+    struct item *first, *current, *temp;
     int x;
 
     for(x = 0; x<5; x++)
@@ -94,16 +166,22 @@ int main(int argc, char* argv[])
             current->next = allocate();
             current = current->next;
         }
-        fill(current, x+1);
+        fill(current, x);
     }
     
     current->next = NULL;
 
-    puts("Original <List:");
+    puts("Original List:");
     output(first);
 
-    puts("Removing the fourth record...");
-    current = first;
+    delete(first, 1);
+    delete(first, 5);
+
+    insert_item(first, 2, "apples", 4.40);
+
+
+    puts("Updated List:");
+    output(first);
 
     puts("\nDone.");
     return 0;
