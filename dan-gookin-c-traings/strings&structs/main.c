@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+#pragma pack(1)
+
 int* construct_array_int(int size)
 {
     return (int*)malloc(sizeof(int)*size);
@@ -32,8 +34,14 @@ struct AB* func(struct AB* abc)
     abcd->b.b = abc->b.b + 1;
 }
 
+__attribute__((always_inline)) inline int return2(){
+    return 2;
+}
+
 int main()
 {
+
+    int a = return2();
 
     union storage {
         char a : 4;
@@ -98,6 +106,26 @@ int main()
         napis2, strlen(napis2),
         literal, strlen(literal)
     );
+
+    struct Entity1 {
+        char a;
+        int b;
+        char c;
+    } ent1;
+
+    struct Entity2 {
+        int b;
+        char a;
+        char c;
+    } ent2;
+
+    struct __attribute__((packed)) Entity3{
+        int b;
+        char a;
+        char c;
+    } ent3;
+
+    printf("Size of struct %d %d %d\n", sizeof(ent1), sizeof(ent2), sizeof(ent3));
 
 
     return 0;
