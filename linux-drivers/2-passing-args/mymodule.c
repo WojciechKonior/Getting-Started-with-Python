@@ -20,7 +20,7 @@ module_param_array(
     int,
     SIZE,
     S_IRUSR | S_IWUSR | S_IXUSR | S_IWGRP | S_IRGRP
-);
+.);
 
 void display(void){
     printk(KERN_ALERT "VALUE: %d\n", param_var);
