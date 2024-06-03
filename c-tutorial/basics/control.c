@@ -1,7 +1,14 @@
+#define NDEBUG
+
 #include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+
+void cleanup(){}
 
 int main(int argc, char*argv[])
 {
+    atexit(cleanup); // do after exit;
     int x = 2;
 
     if(x==2 && x != 10){
@@ -35,9 +42,8 @@ int main(int argc, char*argv[])
     printf("\n");
 
     do{
-        if(i<15) continue;
+        if(i++>15) continue;
         printf("*");
-        i++;
     } while (i<20);
     printf("\n");
 
@@ -46,7 +52,10 @@ int main(int argc, char*argv[])
     }
     printf("\n");
 
-
+    int one = 10, two = 20;
+    assert(one == two);
+    abort(); // it exits without cleanup
+    exit(1); // it exits with cleanup (can be also called in function)
     printf("\nDone.\n");
     return 0;
 }

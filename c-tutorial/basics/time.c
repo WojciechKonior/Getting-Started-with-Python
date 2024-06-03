@@ -1,9 +1,20 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <time.h>
+// #include <stdbool.h>
+
+// typedef enum Bool {
+//     false = 0,
+//     true
+// } bool;
+// typedef unsigned char bool;
+// #define true 1
+// #define false 0
 
 int main(int argc, char*argv[])
 {
+    // bool x = false;
+    // bool y = true;
 
     time_t now = time(NULL);
     printf("Epoch: %ld\n", now);

@@ -95,6 +95,9 @@ int main(int argc, char*argv[])
         .grades = {5,5,5,5,5}
     };
 
+    register int varreg = 10;
+    int* ptrvar = &varreg;
+
     printf("\nDone.\n");
     return 0;
 }
