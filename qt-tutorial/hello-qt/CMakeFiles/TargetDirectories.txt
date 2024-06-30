@@ -1,0 +1,9 @@
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/CMakeFiles/hello.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/CMakeFiles/edit_cache.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/CMakeFiles/rebuild_cache.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/CMakeFiles/list_install_components.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/CMakeFiles/install.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/CMakeFiles/install/local.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/CMakeFiles/install/strip.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/CMakeFiles/hello_autogen_timestamp_deps.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/CMakeFiles/hello_autogen.dir
