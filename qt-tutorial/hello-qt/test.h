@@ -16,6 +16,7 @@ signals:
 
 public slots:
     void dostuff();
+    void say_hello(const char* txt);
 };
 
 #endif

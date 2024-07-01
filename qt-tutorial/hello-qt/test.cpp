@@ -15,3 +15,8 @@ void Test::dostuff()
     qInfo()<<"Test: doing stuff";
     emit close();
 }
+
+void Test::say_hello(const char* txt)
+{
+    qInfo()<<"Hello" << txt;
+}

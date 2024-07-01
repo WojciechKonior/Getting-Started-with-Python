@@ -229,5 +229,21 @@ CMakeFiles/hello.dir/main.cpp.o: \
  /usr/include/qt/QtCore/qsharedpointer.h \
  /usr/include/qt/QtCore/qsharedpointer_impl.h \
  /usr/include/qt/QtCore/QList /usr/include/qt/QtCore/qlist.h \
+ /usr/include/qt/QtCore/QStringList /usr/include/qt/QtCore/qstringlist.h \
+ /usr/include/qt/QtCore/QScopedPointer \
+ /usr/include/qt/QtCore/qscopedpointer.h \
+ /usr/include/qt/QtCore/QSharedPointer \
+ /usr/include/qt/QtCore/qsharedpointer.h \
  /home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/test.h \
- /usr/include/qt/QtCore/QObject /usr/include/qt/QtCore/qobject.h
+ /usr/include/qt/QtCore/QObject /usr/include/qt/QtCore/qobject.h \
+ /usr/include/c++/14.1.1/iostream /usr/include/c++/14.1.1/ostream \
+ /usr/include/c++/14.1.1/ios /usr/include/c++/14.1.1/bits/basic_ios.h \
+ /usr/include/c++/14.1.1/bits/locale_facets.h \
+ /usr/include/c++/14.1.1/cwctype /usr/include/wctype.h \
+ /usr/include/bits/wctype-wchar.h \
+ /usr/include/c++/14.1.1/x86_64-pc-linux-gnu/bits/ctype_base.h \
+ /usr/include/c++/14.1.1/x86_64-pc-linux-gnu/bits/ctype_inline.h \
+ /usr/include/c++/14.1.1/bits/locale_facets.tcc \
+ /usr/include/c++/14.1.1/bits/basic_ios.tcc \
+ /usr/include/c++/14.1.1/bits/ostream.tcc /usr/include/c++/14.1.1/istream \
+ /usr/include/c++/14.1.1/bits/istream.tcc
