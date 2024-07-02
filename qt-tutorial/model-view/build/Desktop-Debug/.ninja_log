@@ -1,0 +1,23 @@
+# ninja log v6
+0	287	1719933349112246056	model-view_autogen/timestamp	b4d460d304d2d46f
+0	287	1719933349112246056	model-view_autogen/mocs_compilation.cpp	b4d460d304d2d46f
+0	287	1719933349112246056	/home/wkonior/Projects/programmingTrainings/qt-tutorial/model-view/build/Desktop-Debug/model-view_autogen/timestamp	b4d460d304d2d46f
+0	287	1719933349112246056	/home/wkonior/Projects/programmingTrainings/qt-tutorial/model-view/build/Desktop-Debug/model-view_autogen/mocs_compilation.cpp	b4d460d304d2d46f
+288	3211	1719933349115578998	CMakeFiles/model-view.dir/model-view_autogen/mocs_compilation.cpp.o	fec945953c65cbf6
+288	3281	1719933349115578998	CMakeFiles/model-view.dir/mainwindow.cpp.o	1d46584cb8d62bf3
+288	3509	1719933349115578998	CMakeFiles/model-view.dir/main.cpp.o	818bcad969a4246b
+3509	3776	1719933352335228885	model-view	aa4505aa94b48ec7
+3	302	1719933581620066282	model-view_autogen/timestamp	b4d460d304d2d46f
+3	302	1719933581620066282	model-view_autogen/mocs_compilation.cpp	b4d460d304d2d46f
+3	302	1719933581620066282	/home/wkonior/Projects/programmingTrainings/qt-tutorial/model-view/build/Desktop-Debug/model-view_autogen/timestamp	b4d460d304d2d46f
+3	302	1719933581620066282	/home/wkonior/Projects/programmingTrainings/qt-tutorial/model-view/build/Desktop-Debug/model-view_autogen/mocs_compilation.cpp	b4d460d304d2d46f
+302	3912	1719933581626732940	CMakeFiles/model-view.dir/mainwindow.cpp.o	1d46584cb8d62bf3
+302	4046	1719933581626732940	CMakeFiles/model-view.dir/main.cpp.o	818bcad969a4246b
+302	4159	1719933581626732940	CMakeFiles/model-view.dir/model-view_autogen/mocs_compilation.cpp.o	fec945953c65cbf6
+4159	4429	1719933585483394024	model-view	aa4505aa94b48ec7
+2	14	1719934176659992172	model-view_autogen/timestamp	b4d460d304d2d46f
+2	14	1719934176659992172	model-view_autogen/mocs_compilation.cpp	b4d460d304d2d46f
+2	14	1719934176659992172	/home/wkonior/Projects/programmingTrainings/qt-tutorial/model-view/build/Desktop-Debug/model-view_autogen/timestamp	b4d460d304d2d46f
+2	14	1719934176659992172	/home/wkonior/Projects/programmingTrainings/qt-tutorial/model-view/build/Desktop-Debug/model-view_autogen/mocs_compilation.cpp	b4d460d304d2d46f
+14	3308	1719934176673327222	CMakeFiles/model-view.dir/mainwindow.cpp.o	1d46584cb8d62bf3
+3308	3546	1719934179967082024	model-view	aa4505aa94b48ec7

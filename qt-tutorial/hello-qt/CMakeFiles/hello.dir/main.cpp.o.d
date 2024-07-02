@@ -234,6 +234,7 @@ CMakeFiles/hello.dir/main.cpp.o: \
  /usr/include/qt/QtCore/qscopedpointer.h \
  /usr/include/qt/QtCore/QSharedPointer \
  /usr/include/qt/QtCore/qsharedpointer.h \
+ /usr/include/qt/QtCore/QStringView /usr/include/qt/QtCore/qstringview.h \
  /home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/test.h \
  /usr/include/qt/QtCore/QObject /usr/include/qt/QtCore/qobject.h \
  /usr/include/c++/14.1.1/iostream /usr/include/c++/14.1.1/ostream \

@@ -5,16 +5,33 @@
 #include <QStringList>
 #include <QScopedPointer>
 #include <QSharedPointer>
+#include <QStringView>
 #include "test.h"
 #include <iostream>
 
-QSharedPointer<Test> some_func()
+void qt_delete_all()
+{
+    QList<Test*> list;
+    for(int i = 0; i<10; i++)
+        list.append(new Test());
+
+    qDeleteAll(list);
+    list.clear();
+}
+
+void smart_pointers()
+{
+    QScopedPointer<Test> ptr(new Test());
+    ptr->say_hello("Wojtek");
+    QSharedPointer<Test> ptr2(new Test());
+}
+
+void qt_qstring()
 {
     QString name = QString("%1 %2 %3").arg("Wojtek").arg("Konior").arg(36);
     qInfo() << name;
 
     QChar a = name.at(10);
-
     for(QChar c : name)
         qInfo()<<c;
 
@@ -29,47 +46,63 @@ QSharedPointer<Test> some_func()
     qDebug()<<"Index " << name.indexOf("Konior");
 
     QStringList list = name.split(" ");
-
-    QScopedPointer<Test> ptr(new Test());
-    ptr->say_hello("Wojtek");
-    QSharedPointer<Test> ptr2(new Test());
-
     QString str = "wojtek";
-
     std::cout << str.toStdString() << std::endl;
 
-
-    return ptr2;
 }
 
-int main(int argc, char *argv[])
+void qt_user_input()
 {
-    QCoreApplication app(argc, argv);
-
     qInfo()<<"What is your name: ";
 
     QTextStream qin(stdin);
     QString name = qin.readLine();
 
     qInfo() << "Hello " << name;
+}
 
-    Test *obj = new Test(&app);
+void qt_qobject(QObject* app)
+{
+    Test *obj = new Test(app);
     Test *subobj = new Test(obj);
-    QObject::connect(obj, &Test::close, &app, &QCoreApplication::quit, Qt::QueuedConnection);
+    QObject::connect(
+        obj, 
+        &Test::close, 
+        app, 
+        &QCoreApplication::quit, 
+        Qt::QueuedConnection
+    );
     obj->dostuff();
+}
 
-    QList<Test*> list;
-    for(int i = 0; i<10; i++)
-        list.append(new Test());
+void printStringView(QStringView str)
+{
+    qDebug()<<"This is stringView object: " << str;
+    QList<QStringView> list = str.split(' ');
+    for (QStringView part : list)
+    {
+        qDebug() << part;
+    }
+}
 
-    qDeleteAll(list);
-    list.clear();
+void qt_qstringview()
+{
+    QString name = "Wojciech Konior";
+    printStringView(name);
+}
 
-    auto ptr = some_func();
+int main(int argc, char *argv[])
+{
+    QCoreApplication app(argc, argv);
+
+    qt_qobject(&app);
+    qt_user_input();
+    qt_delete_all();
+    smart_pointers();
+    qt_qstring();
+    qt_qstringview();
 
     int e = app.exec();
-
     qInfo() << "Exiting: " << e;
-
     return e;
 }
