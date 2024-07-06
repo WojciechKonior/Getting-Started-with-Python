@@ -9,6 +9,9 @@
 #include <QByteArray>
 #include "test.h"
 #include <iostream>
+#include "qt_qbytearray.h"
+#include "qt_qlist.h"
+#include "qt_qmap.h"
 
 void qt_delete_all()
 {
@@ -98,57 +101,19 @@ void qt_qstringview()
     printStringView(name);
 }
 
-void stats(QByteArray &data)
-{
-    qInfo() << "Length" << data.length() << "Capacity" << data.capacity();
-    qInfo() << data;
-}
-
-void qt_qbytearray()
-{
-    qInfo() << "\n*** QByteArray";
-
-    //Creating an array
-    QByteArray stuff;
-    qInfo() << stuff;
-
-    QByteArray data("Hello");
-    qInfo() << data;
-
-    QByteArray buffer(10, '\t');
-    qInfo() << buffer;
-
-    QByteArray person(QString("Wojtek").toLocal8Bit());
-    qInfo() << person;
-
-    //Sizing the array
-    data.reserve(25);
-    stats(data);
-
-    data.resize(10);
-    stats(data);
-
-    data.truncate(8);
-    stats(data);
-
-    data.clear();
-    stats(data);
-
-    //Modifying the data
-    
-}
-
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
 
-    qt_qobject(&app);
+    // qt_qobject(&app);
     // qt_user_input();
-    qt_delete_all();
-    smart_pointers();
-    qt_qstring();
-    qt_qstringview();
-    qt_qbytearray();
+    // qt_delete_all();
+    // smart_pointers();
+    // qt_qstring();
+    // qt_qstringview();
+    // QtQByteArray::qt_qbytearray();
+    // QtQList::qt_qlist();
+    QtQMap::qt_qmap();
 
     int e = app.exec();
     qInfo() << "Exiting: " << e;
