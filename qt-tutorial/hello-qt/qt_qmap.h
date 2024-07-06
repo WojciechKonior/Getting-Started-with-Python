@@ -30,7 +30,26 @@ public:
     static void modifying_item(TestMap& tests)
     {
         QSharedPointer<Test> ptr(new Test());
-        tests["test1"] = ptr;
+        // tests.insert("test", ptr);
+        tests["test"] = ptr;
+
+        //searching for items
+        qInfo() << "Exists:" << tests.contains("test");
+        auto iter = tests.find("test");
+        if(iter != tests.end()) qInfo() << iter.key() << iter.value();
+
+        for(const auto& value : tests.values())
+            qInfo() << value;
+
+        for(const auto& key : tests.keys())
+            qInfo() << key;
+
+        if(!tests.contains("test"))
+            qWarning() << "Cat not found";
+            return;
+        
+        tests.remove("test");
+        tests.clear();
     }
 
     static TestMap getTests()
