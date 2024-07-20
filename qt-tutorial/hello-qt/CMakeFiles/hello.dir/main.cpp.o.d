@@ -277,4 +277,10 @@ CMakeFiles/hello.dir/main.cpp.o: \
  /usr/include/c++/14.1.1/bits/random.tcc \
  /home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/qt_qmap.h \
  /usr/include/qt/QtCore/QMap /usr/include/qt/QtCore/qmap.h \
- /usr/include/qt/QtCore/QString /usr/include/qt/QtCore/qstring.h
+ /usr/include/qt/QtCore/QString /usr/include/qt/QtCore/qstring.h \
+ /usr/include/qt/QtCore/QStorageInfo \
+ /usr/include/qt/QtCore/qstorageinfo.h /usr/include/qt/QtCore/qdir.h \
+ /usr/include/qt/QtCore/qfileinfo.h /usr/include/qt/QtCore/qfile.h \
+ /usr/include/qt/QtCore/qfiledevice.h /usr/include/qt/QtCore/QDir \
+ /usr/include/qt/QtCore/qdir.h /usr/include/qt/QtCore/QFileInfo \
+ /usr/include/qt/QtCore/qfileinfo.h /usr/include/qt/QtCore/QFileInfoList

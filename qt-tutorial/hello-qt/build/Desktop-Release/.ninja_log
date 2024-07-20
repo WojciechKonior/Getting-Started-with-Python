@@ -1,0 +1,15 @@
+# ninja log v6
+1	109	1720711066976246358	hello_autogen/timestamp	ee6b1bb2fa33ba3f
+1	109	1720711066976246358	hello_autogen/mocs_compilation.cpp	ee6b1bb2fa33ba3f
+1	109	1720711066976246358	/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Release/hello_autogen/timestamp	ee6b1bb2fa33ba3f
+1	109	1720711066976246358	/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Release/hello_autogen/mocs_compilation.cpp	ee6b1bb2fa33ba3f
+110	958	1720711066979578821	CMakeFiles/hello.dir/hello_autogen/mocs_compilation.cpp.o	8aeeb1c1c3feb57b
+110	988	1720711066979578821	CMakeFiles/hello.dir/test.cpp.o	bec176d1c698eb7d
+110	1600	1720711066979578821	CMakeFiles/hello.dir/main.cpp.o	3c0501a56484efca
+1600	1678	1720711068469196445	hello	7402f380636b6120
+1	8	1720966147353703370	hello_autogen/timestamp	ee6b1bb2fa33ba3f
+1	8	1720966147353703370	hello_autogen/mocs_compilation.cpp	ee6b1bb2fa33ba3f
+1	8	1720966147353703370	/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Release/hello_autogen/timestamp	ee6b1bb2fa33ba3f
+1	8	1720966147353703370	/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Release/hello_autogen/mocs_compilation.cpp	ee6b1bb2fa33ba3f
+8	1596	1720966147360370009	CMakeFiles/hello.dir/main.cpp.o	3c0501a56484efca
+1596	1679	1720966148947030237	hello	7402f380636b6120

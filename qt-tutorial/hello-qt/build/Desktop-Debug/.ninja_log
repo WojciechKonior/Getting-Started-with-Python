@@ -1,0 +1,9 @@
+# ninja log v6
+0	117	1720710955886541733	hello_autogen/timestamp	84cd6162c3412a7
+0	117	1720710955886541733	hello_autogen/mocs_compilation.cpp	84cd6162c3412a7
+0	117	1720710955886541733	/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Debug/hello_autogen/timestamp	84cd6162c3412a7
+0	117	1720710955886541733	/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Debug/hello_autogen/mocs_compilation.cpp	84cd6162c3412a7
+117	1061	1720710955889874303	CMakeFiles/hello.dir/hello_autogen/mocs_compilation.cpp.o	866826bd635ee5b
+117	1066	1720710955893206874	CMakeFiles/hello.dir/test.cpp.o	7540196a1b120846
+117	1411	1720710955889874303	CMakeFiles/hello.dir/main.cpp.o	8509fcb3a732de3b
+1411	1516	1720710957186266291	hello	a07538b2e355ce8

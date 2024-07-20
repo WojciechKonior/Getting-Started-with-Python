@@ -1,0 +1,9 @@
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Release/CMakeFiles/hello.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Release/CMakeFiles/edit_cache.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Release/CMakeFiles/rebuild_cache.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Release/CMakeFiles/list_install_components.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Release/CMakeFiles/install.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Release/CMakeFiles/install/local.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Release/CMakeFiles/install/strip.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Release/CMakeFiles/hello_autogen_timestamp_deps.dir
+/home/wkonior/Projects/programmingTrainings/qt-tutorial/hello-qt/build/Desktop-Release/CMakeFiles/hello_autogen.dir
