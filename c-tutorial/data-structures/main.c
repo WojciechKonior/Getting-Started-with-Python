@@ -74,6 +74,73 @@ void printtrie(trienode *root)
     printtrie_rec(root, NULL, 0);
 }
 
+bool searchtrie(trienode *root, char *signedtext)
+{
+    unsigned char *text = (unsigned char*)signedtext;
+    int length = strlen(signedtext);
+
+    trienode *tmp = root;
+
+    for(int i = 0; i<length; i++)
+    {
+        if(tmp->children[text[i]] == NULL){
+            return false;
+        }
+
+        tmp = tmp->children[text[i]];
+
+    }
+    return tmp->terminal;
+}
+
+bool node_has_children(trienode *node){
+    if(node == NULL) return false;
+
+    for(int i = 0; i<NUM_CHARS; i++){
+        if(node->children[i] != NULL){
+            return true;
+        }
+    }
+    return false;
+}
+
+trienode* deletestr_rec(trienode *node, unsigned char *text, bool *deleted)
+{
+    if(node == NULL) return node;
+
+    if(*text == '\0'){
+        if(node->terminal){
+            node->terminal = false;
+            *deleted = true;
+
+            if(node_has_children(node)==false){
+                free(node);
+                node = NULL;
+            }
+        }
+
+        return node;
+    }
+
+    node->children[text[0]] = deletestr_rec(node->children[text[0]], text+1, deleted);
+    if(*deleted && node_has_children(node) == false && node->terminal == false){
+        free(node);
+        node = NULL;
+    }
+
+    return node;
+}
+
+bool deletestr(trienode** root, char *signedtext)
+{
+    unsigned char* text = (unsigned char*)signedtext;
+
+    bool result = false;
+
+    if(*root == NULL) return false;
+    *root = deletestr_rec(*root, text, &result);
+}
+
 int main(int argc, char*argv[])
 {
     trienode *root = NULL;
@@ -83,6 +150,10 @@ int main(int argc, char*argv[])
     trieinsert(&root, "CAT");
     trieinsert(&root, "HAPPY");
     printtrie(root);
+
+    printf("search for CATTLE: %d\n", searchtrie(root, "CATTLE"));
+    printf("search for CAT: %d\n", searchtrie(root, "CAT"));
+    printf("search for KITTEN: %d\n", searchtrie(root, "KITTEN"));
     printf("\nDone.\n");
     return 0;
 }
