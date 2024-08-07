@@ -3,44 +3,44 @@
 #include <stdbool.h>
 #include <string.h>
 
-typedef struct node {
+typedef struct node{
     int value;
     struct node* next;
     struct node* prev;
 } node_t;
 
-void printlist(node_t *head){
-    node_t *temporary = head;
-
-    while(temporary != NULL){
-        printf("%d - ", temporary->value);
-        temporary = temporary->next;
-    }
-    printf("\n");
-}
-
 node_t* create_new_node(int value){
-    node_t *result = malloc(sizeof(node_t));
-    result->value = value;
-    result->next = NULL;
-    result->prev = NULL;
+    node_t* result = malloc(sizeof(node_t));
+    if(result != NULL){
+        result->value = value;
+        result->next = NULL;
+        result->prev = NULL;
+    }   
     return result;
 }
 
-node_t* insert_at_head(node_t **head, node_t *node_to_insert){
-    node_to_insert->next = *head;
-    (*head)->prev = node_to_insert;
-    *head = node_to_insert;
+node_t* insert_at_head(node_t** head_ptr, node_t* node_to_insert){
+    node_t* head = *head_ptr;
+    node_to_insert->next = head;
+    if(head!=NULL) node_to_insert->next->prev = node_to_insert;
+    head = node_to_insert;
     return node_to_insert;
 }
 
-void insert_after_node(node_t *node_to_insert_after, node_t* newnode){
-    newnode->next = node_to_insert_after->next;
-    if(newnode->next != NULL){
-        newnode->next->prev = node_to_insert_after;
+void insert_after_node(node_t* node_to_insert_after, node_t* new_node){
+    new_node->next = node_to_insert_after->next;
+    new_node->prev = node_to_insert_after;
+    node_to_insert_after->next = new_node;
+    if(new_node->next != NULL) new_node->next->prev = new_node;
+}
+
+node_t* find_node(node_t* head, int value){
+    node_t* tmp = head;
+    while(tmp!=NULL){
+        if(tmp->value == value) return tmp;
+        tmp = tmp->next;
     }
-    newnode->prev = node_to_insert_after;
-    node_to_insert_after->next = newnode;
+    return NULL;
 }
 
 void remove_node(node_t **head, node_t *node_to_remove){
@@ -60,13 +60,14 @@ void remove_node(node_t **head, node_t *node_to_remove){
     return;
 }
 
-node_t *find_node(node_t *head, int value){
-    node_t *tmp = head;
-    while(tmp!=NULL){
-        if(tmp->value == value) return tmp;
-        tmp=tmp->next;
+void printlist(node_t *head){
+    node_t *temporary = head;
+
+    while(temporary != NULL){
+        printf("%d - ", temporary->value);
+        temporary = temporary->next;
     }
-    return NULL;
+    printf("\n");
 }
 
 int main(void)
