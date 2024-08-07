@@ -19,6 +19,25 @@ treenode *createnode(int value){
     return result;
 }
 
+bool insertnumber(treenode **rootptr, int value){
+    treenode *root = *rootptr;
+    if(root == NULL){
+        (*rootptr) = createnode(value);
+        return true;
+    }
+    if(value == root->value) return false;
+    if(value < root->value) return insertnumber(&(root->left), value);
+    else return insertnumber(&(root->right), value);
+}
+
+bool findnumber(treenode *root, int value)
+{
+    if(root == NULL) return false;
+    if(root->value == value) return true;
+    if(value < root->value) return findnumber(root->left, value);
+    else return findnumber(root->right, value);
+}
+
 void printtabs(int numtabs){
     for(int i = 0; i<numtabs; i++){
         printf("\t");
@@ -50,37 +69,6 @@ void printtree_rec(treenode *root, int level){
 
 void printtree(treenode* root){
     printtree_rec(root, 0);
-}
-
-bool insertnumber(treenode **rootptr, int value){
-    treenode *root = *rootptr;
-    if(root == NULL)
-    {
-        //tree empty
-        (*rootptr) = createnode(value);
-        return true;
-    }
-
-    if(value == root->value){
-        //do nothing
-        return false;
-    }
-
-    if(value < root->value){
-        return insertnumber(&(root->left), value);
-    } else {
-        return insertnumber(&(root->right), value);
-    }
-}
-
-bool findnumber(treenode *root, int value)
-{
-    if(root == NULL) return false;
-
-    if(root->value == value) return true;
-
-    if(value < root->value) return findnumber(root->left, value);
-    else return findnumber(root->right, value);
 }
 
 int main(void)
