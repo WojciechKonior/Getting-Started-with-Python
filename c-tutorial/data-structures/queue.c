@@ -22,24 +22,15 @@ void init_queue(queue *q){
 }
 
 bool enqueue(queue *q, int value){
-
     node *newnode = malloc(sizeof(node));
-    if(newnode == NULL){
-        return false;
-    }
+    if(newnode == NULL) return false;
+    
     newnode->value = value;
     newnode->next = NULL;
 
-    if(q->tail != NULL){
-        q->tail->next = newnode;
-    }
-
+    if(q->tail != NULL) q->tail->next = newnode;
     q->tail = newnode;
-    if(q->head == NULL){
-        q->head = newnode;
-    }
-
-    return true;
+    if(q->head == NULL) q->head = newnode;
 }
 
 int dequeue(queue *q){

@@ -54,7 +54,6 @@ typedef struct node {
 
 typedef node* stack;
 
-
 int push(stack* mystack, int value)
 {
     node *newnode = malloc(sizeof(node));
@@ -75,8 +74,6 @@ int pop(stack* mystack)
     free(tmp);
     return result;
 }
-
-
 
 int main(void)
 {
