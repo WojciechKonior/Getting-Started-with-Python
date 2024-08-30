@@ -1,0 +1,54 @@
+sudo docker container create hello-world:linux
+sudo docker ps
+sudo docker ps --all
+sudo docker ps -a
+sudo docker ps -aq
+sudo docker container start [id]
+sudo docker container start --attached [id]
+sudo docker container start -a [id]
+sudo docker logs [id]
+
+# docker run = docker container create + docker container start + docker container attach
+sudo docker run hello-world:linux
+
+#Dockerfile
+	FROM ubuntu
+	LABEL maintainer="Wojciech Konior"
+	USER root
+
+	DOCKER_BUILD_DIR="."
+	SRC_FILE="entrypoint.sh"
+	CONTAINER_DEST_DIR=""
+	COPY /$DOCKER_BUILD_DIR/$SRC_FILE /$CONTAINER_DEST_DIR
+
+	RUN apt -y update
+	RUN apt -y install curl bash
+	RUN chmod 755 $SRC_FILE
+
+	USER wkonior
+	ENTRYPOINT ["/$SRC_FILE"]
+	
+sudo docker build -t our-first-image .
+sudo docker build --file .Dockerfile --tag img-name .
+sudo docker run -d img-name
+sudo docker exec [container-id] [command] #example: sudo docker exec 0b3 time
+sudo docker exec --interactive --tty [container-id] bash
+
+sudo docker stop [container-id]
+sudo docker stop -t 0 [container-id]
+
+sudo docker rm [container-id]
+sudo docker rm -f [container-id]
+sudo docker ps -aq | xargs sudo docker rm
+
+sudo docker images
+sudo docker rmi [image-id]
+sudo docker rmi -f [image-id]
+
+sudo docker run -d --name our-first-server -p 8001:8000 our-first-image
+sudo docker run --rm --entrypoint sh ubuntu -c "echo Hello World"
+sudo docker run --rm --entrypoint sh -v /tmp/container:/tmp ubuntu -c "echo 'Hello World.' > /tmp/file"
+
+sudo docker login
+sudo docker tag our-first-server carlosnunez/our-first-server:0.0.1
+sudo docker push carlosnunez/our-first-server:0.0.1
