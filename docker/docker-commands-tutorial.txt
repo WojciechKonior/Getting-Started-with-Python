@@ -52,3 +52,58 @@ sudo docker run --rm --entrypoint sh -v /tmp/container:/tmp ubuntu -c "echo 'Hel
 sudo docker login
 sudo docker tag our-first-server carlosnunez/our-first-server:0.0.1
 sudo docker push carlosnunez/our-first-server:0.0.1
+
+sudo docker rmi carlosnunez/xq ... ... -f
+sudo docker system prune
+
+sudo docker run --name=alpine --entrypoint=sleep -d alpine infinity
+sudo docker stats alpine
+sudo docker exec -i -t alpine sh
+sudo docker exec -d alpine sleep infinity
+sudo docker top alpine
+sudo docker inspect alpine
+
+	#Use an official Python runtime as the base image
+	FROM python:3.12.0a5-bullseye
+
+	#VOLUME /app/data
+
+	#Set the working directory in the container to /app
+	WORKDIR /app
+
+	#Copy the current directory contents into the container at /app 
+	COPY . /app
+
+	#Install the required packages
+	RUN pip install --no-cache-dir -r requirements.txt
+
+	#Set the environment variable for Flask
+	ENV FLASK_APP=app.py 
+
+	#Add labels to the image
+	#LABEL Formatting Option 1 
+	LABEL "com.example.vendor"="Big Star Collectibles"
+	LABEL version="1.0"
+	LABEL description="The Big Star Collectibles Website \
+	using the Python base image."
+
+	#Run the command to start the Flask application
+	CMD ["flask", "run", "--host=0.0.0.0"]
+	
+docker build -f [dockerfile] .
+docker build --force-rm=true .
+docker search python
+docker search --filter stars=100 python
+docker search --filter is-automated=true python
+docker search --filter is-official=true --filter stars=10 --filter is-automated=false python
+docker search --limit 4 python
+docker search --no-trunc python
+docker search --format "{{.Name}}\t{{.IsAutomated}}\t{{.IsOfficial}}\t{{.Description}}\t{{.StarCount}}" --no-trunc python
+docker image pull python:3.12-rc-bookworm
+
+docker image ls --all
+docker image ls --no-trunc
+docker image ls --quiet
+docker image ls --digests
+docker image ls --filter reference=python*
+docker image ls --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}\t{{.Size}}\t{{.CreatedSince}}\t{{.CreatedAt}}\t{{.Digest}}"
