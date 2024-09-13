@@ -107,3 +107,48 @@ docker image ls --quiet
 docker image ls --digests
 docker image ls --filter reference=python*
 docker image ls --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}\t{{.Size}}\t{{.CreatedSince}}\t{{.CreatedAt}}\t{{.Digest}}"
+
+docker build --no-cache -t big-star-collectibles:v1 -t big-start-collectibles .
+
+docker tag source_img[:tag] target_img[:tag]
+	LABEL version="1.0" \
+	description="..."
+	
+docker push [name of repository]/[name of image]
+docker pull [...]/[...]
+docker image inspect [image id]
+docker image inspect --format='{{json .Config.Labels}}' [img id]
+docker rmi -f [image_name:img_tag]
+docker search [image_name]
+
+docker start big-star-collectibles:v2
+docker run -it -d -p 5000:5000 -v ${PWD}:/app/code big-star-collectibles:v2
+docker stop [name_container]
+docker kill [name_container]
+
+docker ps
+docker ps -a 
+docker ps -n 1
+docker ps -q #show only ids
+docker ps -s #size of containers
+docker ps -l #last created container
+docker ps --no-trunc #full output
+docker ps --filter label="com.example.ventod"="Big Star Collectibles" --format json
+docker ps -a --fileter 'exited=137'
+
+docker inspect [container_id]
+docker inspect --format='{{.Config.Image}}\t{{.Id}}\t{{.LogPath}}' elastic_pearlman
+docker logs --tail 1000 -f [container_id]
+docker logs --tail 1000 -f --details [container_id]
+docker logs --since 2023-01-01T10:00:00Z [container_id]
+docker logs --until 2023-01-01T10:00:00Z --timestamps [container_id]
+
+docker volume create [name_of_volume]
+docker volume ls
+docker volume inspect [name_of_volume]
+docker run -it -d -p 5000:5000 -v [volume_name]:/app/data [image_name:tag]
+	VOLUME /app/data
+	
+docker image prune
+docker container prune -a -f
+docker system prune
