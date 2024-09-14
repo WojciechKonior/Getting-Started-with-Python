@@ -152,3 +152,72 @@ docker run -it -d -p 5000:5000 -v [volume_name]:/app/data [image_name:tag]
 docker image prune
 docker container prune -a -f
 docker system prune
+
+# procedural vs declarative (specify end results, system will determine which steps to execute, 
+# produces the same result each time)
+# docker compose is designed for one server, it means for local develpment,
+# staging server, continous integration testing environment.
+# docker compose is not designed for distributed system or complex production environments
+# docker-compose.yaml
+	version: "3.9"
+	
+	services:
+		storefront:
+			build: .
+		database:
+			image: "mysql"
+		
+docker-compose up
+# up is build create and start
+docker-compose down
+# stops and delete containers and del images and remove all artifacts
+docker-compose restart
+# stop and restart all containers
+docker-compose --help
+
+# environment variables accessible inside container
+# build arugments accessible only at build time
+	version: "3.9"
+	services:
+		scheduler:
+			build: scheduler/.
+			ports:
+				- "81:80"
+			depends_on:
+				- database
+			profiles:
+				- scheduling_services
+		storefront:
+			build:
+				context: .
+				args:
+					- region=us-east-1
+					- alice=0
+			ports:
+				- "80:80"
+				- "443:443"
+			depends_on:
+				- database
+			profiles:
+				- storefront_services
+			environment:
+				- runtime_env=dev
+		database:
+			image: "mysql:"
+			env_file:
+				- ./mysql/env_vars
+			volumes:
+				- ./mysql:/anything:rw # src_dir:target_dir:read_write_mode
+				- kineteco:/var/lib/mysql:rw
+	volumes:
+		kineteco:
+		
+docker-compose --profile storefront_services up
+
+docker-compose.yaml
+docker-compose.override.yaml # this one inherrits from base
+docker-compose.local.yaml
+docker-compose.staging.yaml
+
+docker-compose --file docker-compose.yaml -f docker-compose.local.yaml up
+docker-compose --env-file [path]
