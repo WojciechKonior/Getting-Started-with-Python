@@ -4,7 +4,7 @@
 using std::cout;
 using std::format;
 
-int main(){
+int main(){ //main is the entry point of the program, called by the os when the program launches
   int x;
   auto k = 47;
   const int i{}; //initialized with 0
@@ -13,6 +13,7 @@ int main(){
   int* ip;
   ip = &x;
   int y = *ip;
+  int &z = y;
   auto str = format("x is {}\n", x);
   cout << str;
 }
